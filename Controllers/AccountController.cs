@@ -30,9 +30,6 @@ namespace ProductDataScraper.Controllers
         IPasswordHasher _passwordHasher;
         IDbRepo _dbRepo;
 
-        public const string registerFormViewPath = @"./wwwroot/portfolio/main/Register.html";
-        public const string loginFormViewPath = @"./wwwroot/portfolio/main/Login.html";
-        public const string forpasFormViewPath = @"./wwwroot/portfolio/main/Forpas.html";
 
         public AccountController(IConfiguration config, IPasswordHasher passwordHasher, IDbRepo dbRepo)
         {
