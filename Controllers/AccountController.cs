@@ -183,7 +183,7 @@ namespace ProductDataScraper.Controllers
 
 
         [Route("Login")]
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> Login(string email, string password)
         {
             string cltMsgText = "";
