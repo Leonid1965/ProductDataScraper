@@ -22,11 +22,11 @@ namespace ProductDataScraper.Services
         {
             string url = config["Products:Url"];
 
-           // HtmlWeb web = new HtmlAgilityPack.HtmlWeb();
-            //HtmlDocument doc = await web.LoadFromWebAsync(url);
+            HtmlWeb web = new HtmlAgilityPack.HtmlWeb();
+            HtmlDocument doc = await web.LoadFromWebAsync(url);
 
-            var doc = new HtmlDocument();
-            doc.Load(@"C:\tmp\Products Page\Amazon Best Sellers  Best C# Programming.htm");
+           // var doc = new HtmlDocument();
+           // doc.Load(@"C:\tmp\Products Page\Amazon Best Sellers  Best C# Programming.htm");
 
 
             HtmlNode htmlNode = null; HtmlNode item = null;
