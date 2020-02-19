@@ -84,7 +84,7 @@ namespace Security.Services
         public static int EmailSmtpPort = 25;
         public static string EmailSmtpUsername = "gilgulnet4@gmail.com";
         public static string EmailSmtpFrom = "gilgulnet admin <gilgulnet4@gmail.com>";
-        public static string EmailSmtpPassword = "gilgul123";
+        public static string EmailSmtpPassword = "password";
 
     }
 
