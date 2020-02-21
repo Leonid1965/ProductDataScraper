@@ -1,4 +1,4 @@
-﻿using HtmlAgilityPack;
+using HtmlAgilityPack;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using ProductDataScraper.Models;
@@ -24,11 +24,7 @@ namespace ProductDataScraper.Services
 
             HtmlWeb web = new HtmlAgilityPack.HtmlWeb();
             HtmlDocument doc = await web.LoadFromWebAsync(url);
-
-           // var doc = new HtmlDocument();
-           // doc.Load(@"C:\tmp\Products Page\Amazon Best Sellers  Best C# Programming.htm");
-
-
+           
             HtmlNode htmlNode = null; HtmlNode item = null;
             string txt;
             var nodes = doc.DocumentNode.SelectNodes("//div[@class='a-section a-spacing-none aok-relative']").ToList();
@@ -62,9 +58,10 @@ namespace ProductDataScraper.Services
                     else
                         product.Kind = item.ChildNodes["span"].ChildNodes[2].ChildNodes["span"].InnerText;
 
-                    htmlNode = item.SelectNodes("//span[@class='p13n-sc-price']").FirstOrDefault();
-                    product.Price = double.Parse(htmlNode.InnerText.Substring(1));
-                    product.Currency = htmlNode.InnerText.Substring(0, 1);
+                    htmlNode = item.SelectNodes(".//span[@class='a-size-base a-color-price']").FirstOrDefault();
+                    txt = htmlNode.InnerText.Split("&")[0];
+                    product.Price = double.Parse(txt.Substring(1));
+                    product.Currency = txt.Substring(0, 1);
                     product.RatingUnit = "out of 5 stars";
 
                     if (item.ChildNodes["span"].ChildNodes[3].ChildNodes["a"].Attributes["title"] != null) 
@@ -74,7 +71,6 @@ namespace ProductDataScraper.Services
                     }
 
                     products[i] = product;
-                    item.Remove(); //correct document, error is found.
                 }
                 catch ( Exception e)
                 {
